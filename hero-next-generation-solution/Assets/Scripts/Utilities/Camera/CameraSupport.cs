@@ -21,6 +21,7 @@ public partial class CameraSupport : MonoBehaviour
     // Start is called before the first frame update
     void Awake()  // camera may be disabled by some in Start(), so init in Awake.
     {
+        Screen.SetResolution(1280, 720, true);
         mTheCamera = gameObject.GetComponent<Camera>();
         Debug.Assert(mTheCamera != null); // if this is null, then, the script is not on a Camera and nothing works
 
