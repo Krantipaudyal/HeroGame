@@ -8,7 +8,7 @@ public class EggSpawnSystem : MonoBehaviour
     // UI Support
     public RectTransform mCoolDownTimeBar = null;
 
-    private float kEggInterval = 1f/6f; //changed from 0.2 to better match cam shake
+    private float kEggInterval = 0.2f;
     private const float kCoolDownBarSize = 100f;
 
     // Spawning support

@@ -12,6 +12,9 @@ public class HeroBehavior : MonoBehaviour {
     private bool mMouseDrive = true;
     //  Hero state
     private int mHeroTouchedEnemy = 0;
+
+    //hero camera
+   // public HeroCamera heroCamera; 
     private void TouchedEnemy() { mHeroTouchedEnemy++; }
     public string GetHeroState() { return "HERO: Drive(" + (mMouseDrive?"Mouse":"Key") + 
                                           ") TouchedEnemy(" + mHeroTouchedEnemy + ")   " 
@@ -21,6 +24,7 @@ public class HeroBehavior : MonoBehaviour {
     {
         // Actually since Hero spwans eggs, this can be done in the Start() function, but, 
         // just to show this can also be done here.
+       // heroCamera = gameObject.AddComponent<HeroCamera>();
         Debug.Assert(mEggSystem != null);
         EggBehavior.InitializeEggSystem(mEggSystem);
     }

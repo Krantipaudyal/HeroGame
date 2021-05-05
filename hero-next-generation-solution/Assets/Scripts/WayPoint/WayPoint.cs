@@ -10,6 +10,8 @@ public class WayPoint : MonoBehaviour
     private const float kRepositionRange = 15f; // +- this value
     private Color mNormalColor = Color.white;
     
+    //to activate camera of waypoint
+    private WayPointCam toActivate;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,7 @@ public class WayPoint : MonoBehaviour
     {
         Vector3 originalPosition = transform.position;
         float tempTime = mHitCount + 1;
+        StartCoroutine(toActivate.activateCamera(tempTime));
         Debug.Log(tempTime);
         while (tempTime >= 0f)
         {

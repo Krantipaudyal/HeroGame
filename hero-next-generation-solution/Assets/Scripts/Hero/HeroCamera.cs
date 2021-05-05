@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class HeroCamera : MonoBehaviour
 {
- 
-    public float smoothSpeed = 0.125f;
-    public Vector3 offset;
+    public bool canShake = true;
+    //public float smoothSpeed = 0.125f; //is this needed?
+    //public Vector3 offset; //^^^
     public GameObject objectToFollow;
     
     public float speed = 0.5f;
     
     //for camera shake
     public Transform target;
-    public float shakeDuration = 1.0f;
-    private float shakeMagnitude = 1.0f;
-    private float dampingSpeed = 1.0f;
-    Vector3 initialPos;
+    public float shakeMagnitude = 1.0f;
 
 
     public string getHeroCamState()
@@ -43,25 +40,36 @@ public class HeroCamera : MonoBehaviour
         
         this.transform.position = position;
 
-        shakeCamera();
+        //canShake prevents this from being called every single Update
+        if (Input.GetKey("space") && canShake)
+        {
+            canShake = false;
+            StartCoroutine(shakeCamera());
+        }
     }
 
-    void shakeCamera()
+    IEnumerator shakeCamera()
     {
-         if (Input.GetKey("space")) 
-         {
-            if (shakeDuration > 0)
-            {
-            target.localPosition = initialPos + Random.insideUnitSphere * shakeMagnitude;
-            
-            shakeDuration -= Time.deltaTime * dampingSpeed;
-            }
-            else
-            {
-            shakeDuration = 0f;
-            target.localPosition = initialPos;
-            }
-         }
+        Debug.Log("CameraShake");
+        Vector3 originalPosition = transform.position;
+        float dampening = 1f; //Must always stay 1f or time will change!
+        while (dampening >= 0f)
+        {
+            float x = Random.Range(originalPosition.x - shakeMagnitude * dampening,
+                originalPosition.x + shakeMagnitude * dampening);
+            float y = Random.Range(originalPosition.y - shakeMagnitude * dampening, 
+                originalPosition.y + shakeMagnitude * dampening);
+
+            transform.position = new Vector3(x, y, -1);
+
+            //If both are 1/60f, lasts for 1 second with a "frame rate" of 60fps
+            //Dampening is more so FPS is still 60 but it ends faster. 1/6 of a second
+            //is the total time now. Egg spawn rate was changed to match this
+            dampening -= 1f / 10f;
+            yield return new WaitForSeconds(1f / 60f);
+        }
+        transform.position = originalPosition;
+        canShake = true; //Buffer to prevent call every single frame
     }
 
 

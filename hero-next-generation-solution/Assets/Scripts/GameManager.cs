@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
     public HeroBehavior mHero = null;
     public WayPointSystem mWayPoints = null;
     private EnemySpawnSystem mEnemySystem = null;
+    public HeroCamera mHeroCam = null;
 
     private CameraSupport mMainCamera;
     
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour {
     {
         mGameStateEcho.text =  mWayPoints.GetWayPointState() + "  " + 
                                mHero.GetHeroState() + "  " + 
-                               mEnemySystem.GetEnemyState();
+                               mEnemySystem.GetEnemyState() ;//+ "  " ;
+                                 //mHeroCam.getHeroCamState();
     }
 }

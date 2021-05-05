@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyCamera : MonoBehaviour
 {
+
+    //bool isActive
     // Start is called before the first frame update
     void Start()
     {

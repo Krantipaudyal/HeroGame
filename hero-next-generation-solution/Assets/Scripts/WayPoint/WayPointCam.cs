@@ -13,27 +13,26 @@ public class WayPointCam : MonoBehaviour
     void Start()
     {
         //at start this needs to be false for both 
-        gameObject.SetActive(true);
-        wayPointCamera.enabled = true;
+        gameObject.SetActive(false);
+        wayPointCamera.enabled = false;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        activateCamera();
     }
 
     //if waypoints are triggered othe camera needs to set active.
     //call this function from waypoints.cs to activate camera
-    void activateCamera()
+    public IEnumerator activateCamera(float activeTime)
     {
-        //if waypoint object trigers
-        //needs if statement for that
-        if(isActive == false)
+
+        if(isActive == true)
         {
             isActive = true;
             wayPointCamera.enabled = true;
         }
+        yield return new WaitForSeconds(activeTime);
     }
 }
