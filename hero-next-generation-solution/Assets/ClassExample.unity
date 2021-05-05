@@ -367,7 +367,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 310.9022, y: 19.2555}
+  m_AnchoredPosition: {x: 314.2, y: 23.4}
   m_SizeDelta: {x: 602.1956, y: 21.2111}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &381550214
@@ -528,8 +528,8 @@ GameObject:
   m_Component:
   - component: {fileID: 545972956}
   - component: {fileID: 545972958}
-  - component: {fileID: 545972957}
   - component: {fileID: 545972959}
+  - component: {fileID: 545972957}
   m_Layer: 0
   m_Name: WayPointA
   m_TagString: Untagged
@@ -751,12 +751,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ac502695607e549982cf3e98cbf69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothSpeed: 0.125
-  offset: {x: 1, y: 1, z: 1}
+  canShake: 1
   objectToFollow: {fileID: 1660550317}
   speed: 0.5
   target: {fileID: 883571139}
-  shakeDuration: 1
+  shakeMagnitude: 1
 --- !u!81 &883571141
 AudioListener:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class EnemySpawnSystem
     private Vector2 mSpawnRegionMin, mSpawnRegionMax;
 
     private int mEnemyDestroyed = 0;
+    private int mEnemyTouched = 0;
 
     public EnemySpawnSystem(Vector2 min, Vector2 max)
     {
@@ -33,7 +34,8 @@ public class EnemySpawnSystem
         }
     }
 
-    public void OneEnemyDestroyed() { mEnemyDestroyed++;  ReplaceOneEnemy(); }
+    public void OneEnemyDestroyed() { mEnemyDestroyed++; ReplaceOneEnemy(); }
     public void ReplaceOneEnemy() { mTotalEnemy--; GenerateEnemy(); }
-    public string GetEnemyState() { return "  ENEMY: Count(" + mTotalEnemy + ") Destroyed(" + mEnemyDestroyed + ")"; }
+    public void enemyTouched() { mEnemyTouched++; ReplaceOneEnemy(); }
+    public string GetEnemyState() { return "Enemies Touched(" + mEnemyTouched + ")   ENEMY: Count(" + mTotalEnemy + ") Destroyed(" + mEnemyDestroyed + ")" + "Press 'Q' to Quit!"; }
 }

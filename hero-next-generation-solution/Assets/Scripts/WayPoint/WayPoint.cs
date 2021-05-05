@@ -32,7 +32,6 @@ public class WayPoint : MonoBehaviour
     {
         Vector3 originalPosition = transform.position;
         float tempTime = mHitCount + 1;
-        StartCoroutine(toActivate.activateCamera(tempTime));
         Debug.Log(tempTime);
         while (tempTime >= 0f)
         {
@@ -59,6 +58,7 @@ public class WayPoint : MonoBehaviour
             GetComponent<SpriteRenderer>().color = c;
             if (mHitCount > kHitLimit)
             {
+                StopAllCoroutines();
                 mHitCount = 0;
                 Reposition();
             }

@@ -16,9 +16,16 @@ public class HeroBehavior : MonoBehaviour {
     //hero camera
    // public HeroCamera heroCamera; 
     private void TouchedEnemy() { mHeroTouchedEnemy++; }
-    public string GetHeroState() { return "HERO: Drive(" + (mMouseDrive?"Mouse":"Key") + 
-                                          ") TouchedEnemy(" + mHeroTouchedEnemy + ")   " 
-                                            + mEggSystem.EggSystemStatus(); }
+    //public string GetHeroState() { return "HERO: Drive(" + (mMouseDrive?"Mouse":"Key") + 
+    //                                    ") TouchedEnemy(" + mHeroTouchedEnemy + ")   " 
+    //                                     + mEggSystem.EggSystemStatus(); }
+
+    public string GetHeroState()
+    {
+        return "HERO: Drive(" + (mMouseDrive ? "Mouse" : "Key") +
+               ") "//TouchedEnemy(" + mHeroTouchedEnemy + ")   " 
+                 + mEggSystem.EggSystemStatus();
+    }
 
     private void Awake()
     {

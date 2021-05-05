@@ -115,12 +115,21 @@ public class EnemyBehavior : MonoBehaviour {
 
     private void ThisEnemyIsHit()
     {
-        sEnemySystem.OneEnemyDestroyed();
-        Destroy(gameObject);
+        if (mState == EnemyState.eggState)
+        {
+            sEnemySystem.OneEnemyDestroyed();
+            Destroy(gameObject);
+        }
+        else
+        {
+            sEnemySystem.enemyTouched();
+            Destroy(gameObject);
+        }
+
     }
     #endregion
 
-# region FSM
+    #region FSM
     //Sets all of the possible states for enemy to be in. PatrolState is default
     //For hero contact, order is CCWRotate, CWRotate, Chase, Enlarge, Shrink. For egg contact, it's stun then egg.
     //Enemy can only be destroyed by shooting it in egg state and touching hero in chase state

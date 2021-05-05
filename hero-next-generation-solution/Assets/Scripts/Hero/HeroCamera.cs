@@ -51,10 +51,11 @@ public class HeroCamera : MonoBehaviour
     IEnumerator shakeCamera()
     {
         Debug.Log("CameraShake");
-        Vector3 originalPosition = transform.position;
+        //Vector3 originalPosition = transform.position;
         float dampening = 1f; //Must always stay 1f or time will change!
         while (dampening >= 0f)
         {
+            Vector3 originalPosition = transform.position;
             float x = Random.Range(originalPosition.x - shakeMagnitude * dampening,
                 originalPosition.x + shakeMagnitude * dampening);
             float y = Random.Range(originalPosition.y - shakeMagnitude * dampening, 
@@ -68,7 +69,7 @@ public class HeroCamera : MonoBehaviour
             dampening -= 1f / 10f;
             yield return new WaitForSeconds(1f / 60f);
         }
-        transform.position = originalPosition;
+        //transform.position = originalPosition;
         canShake = true; //Buffer to prevent call every single frame
     }
 
